@@ -4,7 +4,7 @@ import (
 	"os"
 	"github.com/spf13/viper"
 	"github.com/fsnotify/fsnotify"
-	"github.com/jonluo94/baasmanager/baas-core/common/log"
+	"github.com/fogray/baasmanager/baas-core/common/log"
 )
 
 var Config *viper.Viper

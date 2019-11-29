@@ -5,8 +5,8 @@ import (
 	"strings"
 	"io/ioutil"
 	"net/url"
-	"github.com/jonluo94/baasmanager/baas-core/common/log"
-	"github.com/jonluo94/baasmanager/baas-core/common/json"
+	"github.com/fogray/baasmanager/baas-core/common/log"
+	"github.com/fogray/baasmanager/baas-core/common/json"
 )
 
 var logger = log.GetLogger("httputil", log.ERROR)

@@ -10,7 +10,7 @@ import (
 	cm "github.com/hyperledger/fabric-sdk-go/third_party/github.com/hyperledger/fabric/protos/common"
 	"crypto/x509"
 	"github.com/hyperledger/fabric/core/ledger/util"
-	"github.com/jonluo94/baasmanager/baas-core/common/json"
+	"github.com/fogray/baasmanager/baas-core/common/json"
 	"github.com/hyperledger/fabric/protos/peer"
 	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/rwsetutil"
 	"encoding/hex"

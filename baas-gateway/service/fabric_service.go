@@ -1,10 +1,10 @@
 package service
 
 import (
-	"github.com/jonluo94/baasmanager/baas-core/core/model"
-	"github.com/jonluo94/baasmanager/baas-core/common/log"
-	"github.com/jonluo94/baasmanager/baas-core/common/httputil"
-	"github.com/jonluo94/baasmanager/baas-gateway/config"
+	"github.com/fogray/baasmanager/baas-core/core/model"
+	"github.com/fogray/baasmanager/baas-core/common/log"
+	"github.com/fogray/baasmanager/baas-core/common/httputil"
+	"github.com/fogray/baasmanager/baas-gateway/config"
 )
 
 var logger = log.GetLogger("service", log.ERROR)

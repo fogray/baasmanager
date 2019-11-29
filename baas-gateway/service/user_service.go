@@ -5,10 +5,10 @@ import (
 	"time"
 	"fmt"
 	"github.com/dgrijalva/jwt-go"
-	"github.com/jonluo94/baasmanager/baas-gateway/entity"
-	"github.com/jonluo94/baasmanager/baas-core/common/password"
-	"github.com/jonluo94/baasmanager/baas-core/common/gintool"
-	jwttool "github.com/jonluo94/baasmanager/baas-core/common/jwt"
+	"github.com/fogray/baasmanager/baas-gateway/entity"
+	"github.com/fogray/baasmanager/baas-core/common/password"
+	"github.com/fogray/baasmanager/baas-core/common/gintool"
+	jwttool "github.com/fogray/baasmanager/baas-core/common/jwt"
 )
 
 const TokenKey = "baas user secret"

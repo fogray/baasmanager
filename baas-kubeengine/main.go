@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/jonluo94/baasmanager/baas-kubeengine/service"
+	"github.com/fogray/baasmanager/baas-kubeengine/service"
 )
 
 func main() {

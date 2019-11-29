@@ -4,10 +4,10 @@ import (
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"github.com/jonluo94/baasmanager/baas-core/core/kubeclient"
-	"github.com/jonluo94/baasmanager/baas-core/common/queue"
-	"github.com/jonluo94/baasmanager/baas-core/common/json"
-	"github.com/jonluo94/baasmanager/baas-core/common/log"
+	"github.com/fogray/baasmanager/baas-core/core/kubeclient"
+	"github.com/fogray/baasmanager/baas-core/common/queue"
+	"github.com/fogray/baasmanager/baas-core/common/json"
+	"github.com/fogray/baasmanager/baas-core/common/log"
 )
 
 var logger = log.GetLogger("kubeengine.engine", log.INFO)

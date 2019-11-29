@@ -3,8 +3,8 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"strconv"
-	"github.com/jonluo94/baasmanager/baas-core/common/gintool"
-	"github.com/jonluo94/baasmanager/baas-gateway/entity"
+	"github.com/fogray/baasmanager/baas-core/common/gintool"
+	"github.com/fogray/baasmanager/baas-gateway/entity"
 )
 
 func (a *ApiController) ChannelAdd(ctx *gin.Context) {

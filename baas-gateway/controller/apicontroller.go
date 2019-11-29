@@ -5,7 +5,7 @@ import (
 	"time"
 	"net/http"
 	"fmt"
-	"github.com/jonluo94/baasmanager/baas-gateway/service"
+	"github.com/fogray/baasmanager/baas-gateway/service"
 )
 
 type ApiController struct {

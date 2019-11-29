@@ -2,8 +2,8 @@ package service
 
 import (
 	"github.com/go-xorm/xorm"
-	"github.com/jonluo94/baasmanager/baas-gateway/entity"
-	"github.com/jonluo94/baasmanager/baas-core/common/gintool"
+	"github.com/fogray/baasmanager/baas-gateway/entity"
+	"github.com/fogray/baasmanager/baas-core/common/gintool"
 )
 
 type RoleService struct {

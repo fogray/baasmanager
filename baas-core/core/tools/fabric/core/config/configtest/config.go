@@ -12,7 +12,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/jonluo94/baasmanager/baas-core/core/tools/viper"
+	"github.com/fogray/baasmanager/baas-core/core/tools/viper"
 	"github.com/stretchr/testify/assert"
 )
 

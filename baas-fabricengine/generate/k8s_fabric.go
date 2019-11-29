@@ -8,10 +8,10 @@ import (
 	"strconv"
 	"fmt"
 	"path/filepath"
-	"github.com/jonluo94/baasmanager/baas-core/core/model"
-	"github.com/jonluo94/baasmanager/baas-core/common/util"
-	"github.com/jonluo94/baasmanager/baas-fabricengine/constant"
-	"github.com/jonluo94/baasmanager/baas-fabricengine/config"
+	"github.com/fogray/baasmanager/baas-core/core/model"
+	"github.com/fogray/baasmanager/baas-core/common/util"
+	"github.com/fogray/baasmanager/baas-fabricengine/constant"
+	"github.com/fogray/baasmanager/baas-fabricengine/config"
 )
 
 var (

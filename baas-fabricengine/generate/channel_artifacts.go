@@ -3,11 +3,11 @@ package generate
 import (
 	"sync"
 	"path/filepath"
-	"github.com/jonluo94/baasmanager/baas-core/core/tools"
-	"github.com/jonluo94/baasmanager/baas-fabricengine/constant"
-	"github.com/jonluo94/baasmanager/baas-core/core/model"
-	"github.com/jonluo94/baasmanager/baas-core/common/util"
-	"github.com/jonluo94/baasmanager/baas-core/common/log"
+	"github.com/fogray/baasmanager/baas-core/core/tools"
+	"github.com/fogray/baasmanager/baas-fabricengine/constant"
+	"github.com/fogray/baasmanager/baas-core/core/model"
+	"github.com/fogray/baasmanager/baas-core/common/util"
+	"github.com/fogray/baasmanager/baas-core/common/log"
 )
 
 var logger = log.GetLogger("fabricengine.generate", log.INFO)

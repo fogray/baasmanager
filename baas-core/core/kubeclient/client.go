@@ -8,7 +8,7 @@ import (
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
-	"github.com/jonluo94/baasmanager/baas-core/common/log"
+	"github.com/fogray/baasmanager/baas-core/common/log"
 )
 
 var logger = log.GetLogger("kubeclient", log.INFO)

@@ -3,7 +3,7 @@ package gintool
 import (
 	"github.com/gin-gonic/gin"
 	"time"
-	"github.com/jonluo94/baasmanager/baas-core/common/log"
+	"github.com/fogray/baasmanager/baas-core/common/log"
 )
 
 func Logger() gin.HandlerFunc {

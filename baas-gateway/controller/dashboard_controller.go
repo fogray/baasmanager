@@ -3,7 +3,7 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"strconv"
-	"github.com/jonluo94/baasmanager/baas-core/common/gintool"
+	"github.com/fogray/baasmanager/baas-core/common/gintool"
 )
 
 func (a *ApiController) DashboardCounts(ctx *gin.Context) {

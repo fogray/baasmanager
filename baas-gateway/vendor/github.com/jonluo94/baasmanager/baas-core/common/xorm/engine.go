@@ -6,7 +6,7 @@ import (
 	"github.com/go-xorm/xorm"
 	_ "github.com/go-sql-driver/mysql"
 
-	"github.com/jonluo94/baasmanager/baas-core/common/log"
+	"github.com/fogray/baasmanager/baas-core/common/log"
 	"github.com/go-xorm/core"
 	"time"
 )

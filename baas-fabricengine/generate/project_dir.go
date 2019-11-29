@@ -4,10 +4,10 @@ import (
 	"strconv"
 	"path/filepath"
 	"fmt"
-	"github.com/jonluo94/baasmanager/baas-core/core/model"
-	"github.com/jonluo94/baasmanager/baas-fabricengine/constant"
-	"github.com/jonluo94/baasmanager/baas-core/common/fileutil"
-	"github.com/jonluo94/baasmanager/baas-fabricengine/config"
+	"github.com/fogray/baasmanager/baas-core/core/model"
+	"github.com/fogray/baasmanager/baas-fabricengine/constant"
+	"github.com/fogray/baasmanager/baas-core/common/fileutil"
+	"github.com/fogray/baasmanager/baas-fabricengine/config"
 )
 
 //用户chain路径

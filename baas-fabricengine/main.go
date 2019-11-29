@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/jonluo94/baasmanager/baas-fabricengine/service"
+	"github.com/fogray/baasmanager/baas-fabricengine/service"
 )
 
 func main() {

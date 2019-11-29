@@ -3,8 +3,8 @@ package service
 import (
 	"github.com/go-xorm/xorm"
 	"fmt"
-	"github.com/jonluo94/baasmanager/baas-gateway/model"
-	"github.com/jonluo94/baasmanager/baas-gateway/entity"
+	"github.com/fogray/baasmanager/baas-gateway/model"
+	"github.com/fogray/baasmanager/baas-gateway/entity"
 )
 
 type DashboardService struct {

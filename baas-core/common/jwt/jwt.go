@@ -3,7 +3,7 @@ package jwt
 import (
 	"github.com/dgrijalva/jwt-go"
 	"fmt"
-	"github.com/jonluo94/baasmanager/baas-core/common/log"
+	"github.com/fogray/baasmanager/baas-core/common/log"
 )
 
 var logger = log.GetLogger("jwt", log.ERROR)

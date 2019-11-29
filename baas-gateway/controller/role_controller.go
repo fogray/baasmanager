@@ -3,8 +3,8 @@ package controller
 import (
 	"strconv"
 	"github.com/gin-gonic/gin"
-	"github.com/jonluo94/baasmanager/baas-core/common/gintool"
-	"github.com/jonluo94/baasmanager/baas-gateway/entity"
+	"github.com/fogray/baasmanager/baas-core/common/gintool"
+	"github.com/fogray/baasmanager/baas-gateway/entity"
 )
 
 func (a *ApiController) RoleList(ctx *gin.Context) {

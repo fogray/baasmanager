@@ -3,10 +3,10 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"strconv"
-	"github.com/jonluo94/baasmanager/baas-gateway/entity"
-	"github.com/jonluo94/baasmanager/baas-core/common/gintool"
-	"github.com/jonluo94/baasmanager/baas-gateway/model"
-	"github.com/jonluo94/baasmanager/baas-core/common/password"
+	"github.com/fogray/baasmanager/baas-gateway/entity"
+	"github.com/fogray/baasmanager/baas-core/common/gintool"
+	"github.com/fogray/baasmanager/baas-gateway/model"
+	"github.com/fogray/baasmanager/baas-core/common/password"
 )
 
 func (a *ApiController) UserAdd(ctx *gin.Context) {

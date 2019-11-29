@@ -4,10 +4,10 @@ import (
 	"github.com/go-xorm/xorm"
 	"bytes"
 	"io"
-	"github.com/jonluo94/baasmanager/baas-gateway/entity"
-	"github.com/jonluo94/baasmanager/baas-core/common/gintool"
-	"github.com/jonluo94/baasmanager/baas-core/common/json"
-	"github.com/jonluo94/baasmanager/baas-core/core/model"
+	"github.com/fogray/baasmanager/baas-gateway/entity"
+	"github.com/fogray/baasmanager/baas-core/common/gintool"
+	"github.com/fogray/baasmanager/baas-core/common/json"
+	"github.com/fogray/baasmanager/baas-core/core/model"
 )
 
 type ChainService struct {

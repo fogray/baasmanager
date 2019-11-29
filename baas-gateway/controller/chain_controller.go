@@ -5,10 +5,10 @@ import (
 	"strconv"
 	"fmt"
 	"net/http"
-	"github.com/jonluo94/baasmanager/baas-gateway/entity"
-	"github.com/jonluo94/baasmanager/baas-core/common/gintool"
+	"github.com/fogray/baasmanager/baas-gateway/entity"
+	"github.com/fogray/baasmanager/baas-core/common/gintool"
 	"time"
-	"github.com/jonluo94/baasmanager/baas-core/core/model"
+	"github.com/fogray/baasmanager/baas-core/core/model"
 )
 
 func (a *ApiController) ChainAdd(ctx *gin.Context) {

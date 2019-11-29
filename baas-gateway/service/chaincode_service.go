@@ -7,9 +7,9 @@ import (
 	"strings"
 	"strconv"
 	"fmt"
-	"github.com/jonluo94/baasmanager/baas-gateway/entity"
-	"github.com/jonluo94/baasmanager/baas-core/common/gintool"
-	"github.com/jonluo94/baasmanager/baas-core/common/json"
+	"github.com/fogray/baasmanager/baas-gateway/entity"
+	"github.com/fogray/baasmanager/baas-core/common/gintool"
+	"github.com/fogray/baasmanager/baas-core/common/json"
 )
 
 type ChaincodeService struct {

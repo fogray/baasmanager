@@ -2,7 +2,7 @@ package entity
 
 import (
 	"strings"
-	"github.com/jonluo94/baasmanager/baas-core/core/model"
+	"github.com/fogray/baasmanager/baas-core/core/model"
 )
 
 

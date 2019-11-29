@@ -240,6 +240,7 @@ func (k *KubeService) PrintPodLogs(ctx *gin.Context) {
 		gintool.ResultFail(ctx, err)
 		return
 	}
+	logger.Infof("%v", pod)
 	msg := k.client.PrintPodLogs(pod)
 
 	gintool.ResultOk(ctx, msg)

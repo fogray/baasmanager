@@ -236,7 +236,9 @@ func (k *KubeService) GetChainPods(ctx *gin.Context) {
 // query pod logs
 func (k *KubeService) PrintPodLogs(ctx *gin.Context) {
 	var pod corev1.Pod
+	logger.Infof("printpodlog start")
 	if err := ctx.ShouldBindJSON(pod); err != nil {
+		logger.Error(err)
 		gintool.ResultFail(ctx, err)
 		return
 	}

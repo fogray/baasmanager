@@ -60,6 +60,7 @@ func main() {
 		api.POST("/chain/changeSize", apiController.ChangeChainResouces)
 		api.GET("/chain/download", apiController.ChainDownload)
 		api.GET("/chain/podsQuery", apiController.ChainPodsQuery)
+		api.POST("/chain/printPodLogs", apiController.PrintPodLogs)
 
 		api.POST("/channel/add", apiController.ChannelAdd)
 		api.POST("/channel/get", apiController.ChannelGet)

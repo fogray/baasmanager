@@ -9,6 +9,7 @@ import (
 	"github.com/fogray/baasmanager/baas-core/common/gintool"
 	"time"
 	"github.com/fogray/baasmanager/baas-core/core/model"
+	corev1 "k8s.io/api/core/v1"
 )
 
 func (a *ApiController) ChainAdd(ctx *gin.Context) {
@@ -249,5 +250,16 @@ func (a *ApiController) ChangeChainResouces(ctx *gin.Context) {
 	} else {
 		gintool.ResultFail(ctx, "change error")
 	}
+
+}
+
+func (a *ApiController) PrintPodLogs(ctx *gin.Context) {
+	var pod corev1.Pod
+	if err := ctx.ShouldBindJSON(&pod); err != nil {
+		gintool.ResultFail(ctx, err)
+		return
+	}
+	printlogs := a.chainService.PrintPodLogs(pod)
+	gintool.ResultOk(ctx, printlogs)
 
 }

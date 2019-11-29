@@ -37,7 +37,7 @@ func (c *Clients) DeletePod(pod *corev1.Pod, ops *metav1.DeleteOptions) {
 	logger.Infof("Delete pod %q \n", pod.GetObjectMeta().GetName())
 }
 
-func (c *Clients) PrintPodLogs(pod corev1.Pod) {
+func (c *Clients) PrintPodLogs(pod corev1.Pod) string {
 	podLogOpts := corev1.PodLogOptions{}
 
 	req := c.KubeClient.CoreV1().Pods(pod.Namespace).GetLogs(pod.Name, &podLogOpts)
@@ -58,4 +58,5 @@ func (c *Clients) PrintPodLogs(pod corev1.Pod) {
 	str := buf.String()
 
 	logger.Infof("Pod loggers :", str)
+	return str
 }

@@ -5,6 +5,7 @@ import (
 	"github.com/fogray/baasmanager/baas-core/common/log"
 	"github.com/fogray/baasmanager/baas-core/common/httputil"
 	"github.com/fogray/baasmanager/baas-gateway/config"
+	corev1 "k8s.io/api/core/v1"
 )
 
 var logger = log.GetLogger("service", log.ERROR)
@@ -75,6 +76,10 @@ func (g FabricService) QueryBlock(channel model.FabricChain,search string) []byt
 
 func (g FabricService) ChangeChainPodResources(resource model.Resources) []byte {
 	return httputil.PostJson(config.Config.GetString("BaasFabricEngine")+"/changeChainPodResources", resource)
+}
+
+func (g FabricService) PrintPodLogs(pod corev1.Pod) []byte {
+	return httputil.PostJson(config.Config.GetString("BaasFabricEngine")+"/printPodLog", pod)
 }
 
 func NewFabricService() *FabricService {

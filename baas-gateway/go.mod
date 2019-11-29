@@ -9,6 +9,7 @@ require (
 	github.com/gin-gonic/gin v1.4.0
 	github.com/go-xorm/xorm v0.7.1
 	github.com/spf13/viper v1.4.0
+	k8s.io/api v0.0.0-20191121015604-11707872ac1c
 )
 
 replace github.com/fogray/baasmanager/baas-core v0.0.0 => ../baas-core

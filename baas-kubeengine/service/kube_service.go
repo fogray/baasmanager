@@ -233,6 +233,18 @@ func (k *KubeService) GetChainPods(ctx *gin.Context) {
 	gintool.ResultOk(ctx, chainPods)
 }
 
+// query pod logs
+func (k *KubeService) PrintPodLogs(ctx *gin.Context) {
+	var pod corev1.Pod
+	if err := ctx.ShouldBindJSON(&pod); err != nil {
+		gintool.ResultFail(ctx, err)
+		return
+	}
+	msg := k.client.PrintPodLogs(pod)
+
+	gintool.ResultOk(ctx, msg)
+}
+
 func Server() {
 	kc := kubeclient.NewClients(config.Config.GetString("BaasKubeMasterConfig"))
 	kubeService := NewKubeService(kc)
@@ -245,5 +257,6 @@ func Server() {
 	router.POST("/changeDeployResources", kubeService.ChangeDeployResources)
 	router.GET("/getChainDomain", kubeService.GetChainDomain)
 	router.GET("/getChainPods", kubeService.GetChainPods)
+	router.POST("/printPodLog", kubeService.PrintPodLogs)
 	router.Run(":" + config.Config.GetString("BaasKubeEnginePort"))
 }

@@ -595,6 +595,27 @@ func (f FabricService) downloadArtifacts(ctx *gin.Context) {
 	ctx.File(tarFile)
 }
 
+func (f FabricService) getPod(ctx *gin.Context) {
+	ns := ctx.Query("ns")
+	podName := ctx.Query("podName")
+
+	res := f.kube.getPod(ns, podName)
+
+	var ret gintool.RespData
+	err := json.Unmarshal(res, &ret)
+	if err != nil {
+		gintool.ResultFail(ctx, err)
+		return
+	}
+
+	if ret.Code != 0 {
+		gintool.ResultFail(ctx, "get chain pod error")
+		return
+	}
+
+	gintool.ResultOk(ctx, ret.Data)
+
+}
 func (f FabricService) printPodLogs(ctx *gin.Context) {
 	ns := ctx.Query("ns")
 	podName := ctx.Query("podName")
@@ -630,6 +651,7 @@ func Server() {
 	router.POST("/downloadArtifacts", fabric.downloadArtifacts)
 	router.POST("/queryChainPods", fabric.queryChainPods)
 	router.POST("/changeChainPodResources", fabric.changeChainPodResources)
+	router.GET("/getPod", fabric.getPod)
 	router.GET("/printPodLogs", fabric.printPodLogs)
 
 	router.Run(":" + config.Config.GetString("BaasFabricEnginePort"))

@@ -42,9 +42,9 @@ func (c *Clients) PrintPodLogs(namespace string, podname string) string {
 
 	req := c.KubeClient.CoreV1().Pods(namespace).GetLogs(podname, &podLogOpts)
 	podLogs, err := req.Stream()
-	if err != nil {
-		logger.Errorf("error in opening stream")
-	}
+	//if err != nil {
+	//	logger.Errorf("error in opening stream")
+	//}
 	defer podLogs.Close()
 
 	buf := new(bytes.Buffer)

@@ -1,10 +1,10 @@
 package kubeclient
 
 import (
-	corev1 "k8s.io/api/core/v1"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"bytes"
 	"io"
+	corev1 "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 func (c *Clients) GetPodList(ns string, ops metav1.ListOptions) *corev1.PodList {
@@ -37,10 +37,10 @@ func (c *Clients) DeletePod(pod *corev1.Pod, ops *metav1.DeleteOptions) {
 	logger.Infof("Delete pod %q \n", pod.GetObjectMeta().GetName())
 }
 
-func (c *Clients) PrintPodLogs(pod corev1.Pod) string {
+func (c *Clients) PrintPodLogs(namespace string, podname string) string {
 	podLogOpts := corev1.PodLogOptions{}
 
-	req := c.KubeClient.CoreV1().Pods(pod.Namespace).GetLogs(pod.Name, &podLogOpts)
+	req := c.KubeClient.CoreV1().Pods(namespace).GetLogs(podname, &podLogOpts)
 	podLogs, err := req.Stream()
 	if err != nil {
 		logger.Errorf("error in opening stream")

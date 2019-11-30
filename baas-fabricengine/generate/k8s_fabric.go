@@ -1,17 +1,17 @@
 package generate
 
 import (
-	"io/ioutil"
 	"bytes"
-	"os"
-	"strings"
-	"strconv"
 	"fmt"
-	"path/filepath"
-	"github.com/fogray/baasmanager/baas-core/core/model"
 	"github.com/fogray/baasmanager/baas-core/common/util"
-	"github.com/fogray/baasmanager/baas-fabricengine/constant"
+	"github.com/fogray/baasmanager/baas-core/core/model"
 	"github.com/fogray/baasmanager/baas-fabricengine/config"
+	"github.com/fogray/baasmanager/baas-fabricengine/constant"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
 )
 
 var (

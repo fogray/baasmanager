@@ -235,15 +235,10 @@ func (k *KubeService) GetChainPods(ctx *gin.Context) {
 
 // query pod logs
 func (k *KubeService) PrintPodLogs(ctx *gin.Context) {
-	var pod corev1.Pod
-	logger.Infof("printpodlog start")
-	if err := ctx.ShouldBindJSON(pod); err != nil {
-		logger.Error(err)
-		gintool.ResultFail(ctx, err)
-		return
-	}
-	logger.Infof("%v", pod)
-	msg := k.client.PrintPodLogs(pod)
+	podName := ctx。Query("podName")
+	ns := ctx.Query("ns")
+	
+	msg := k.client.PrintPodLogs(ns, podName)
 
 	gintool.ResultOk(ctx, msg)
 }

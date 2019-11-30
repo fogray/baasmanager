@@ -1,15 +1,15 @@
 package controller
 
 import (
-	"github.com/gin-gonic/gin"
-	"strconv"
 	"fmt"
-	"net/http"
-	"github.com/fogray/baasmanager/baas-gateway/entity"
 	"github.com/fogray/baasmanager/baas-core/common/gintool"
-	"time"
 	"github.com/fogray/baasmanager/baas-core/core/model"
+	"github.com/fogray/baasmanager/baas-gateway/entity"
+	"github.com/gin-gonic/gin"
 	corev1 "k8s.io/api/core/v1"
+	"net/http"
+	"strconv"
+	"time"
 )
 
 func (a *ApiController) ChainAdd(ctx *gin.Context) {
@@ -210,7 +210,6 @@ func (a *ApiController) ChainDownload(ctx *gin.Context) {
 
 }
 
-
 func (a *ApiController) ChainPodsQuery(ctx *gin.Context) {
 
 	chainId, err := strconv.Atoi(ctx.Query("chainId"))
@@ -254,12 +253,9 @@ func (a *ApiController) ChangeChainResouces(ctx *gin.Context) {
 }
 
 func (a *ApiController) PrintPodLogs(ctx *gin.Context) {
-	var pod corev1.Pod
-	if err := ctx.ShouldBindJSON(&pod); err != nil {
-		gintool.ResultFail(ctx, err)
-		return
-	}
-	printlogs := a.chainService.PrintPodLogs(pod)
+	namespace := ctx.Query("namespace")
+	podName := ctx.Query("podname")
+	printlogs := a.chainService.PrintPodLogs(namespace, podname)
 	gintool.ResultOk(ctx, printlogs)
 
 }

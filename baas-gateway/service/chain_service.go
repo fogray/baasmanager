@@ -1,13 +1,13 @@
 package service
 
 import (
-	"github.com/go-xorm/xorm"
 	"bytes"
-	"io"
-	"github.com/fogray/baasmanager/baas-gateway/entity"
 	"github.com/fogray/baasmanager/baas-core/common/gintool"
 	"github.com/fogray/baasmanager/baas-core/common/json"
 	"github.com/fogray/baasmanager/baas-core/core/model"
+	"github.com/fogray/baasmanager/baas-gateway/entity"
+	"github.com/go-xorm/xorm"
+	"io"
 	corev1 "k8s.io/api/core/v1"
 )
 
@@ -47,13 +47,12 @@ func (l *ChainService) UpdateStatus(chain *entity.Chain) (bool, string) {
 	if err != nil {
 		logger.Error(err.Error())
 	}
-	r,err := res.RowsAffected()
-	if err == nil && r > 0{
+	r, err := res.RowsAffected()
+	if err == nil && r > 0 {
 		return true, "update success"
 	}
 	return false, "update fail"
 }
-
 
 func (l *ChainService) Delete(id int) (bool, string) {
 	i, err := l.DbEngine.Where("id = ?", id).Delete(&entity.Chain{})
@@ -153,7 +152,6 @@ func (l *ChainService) RunChain(chain *entity.Chain) (bool, string) {
 
 func (l *ChainService) QueryChainPods(chain *entity.Chain) (bool, interface{}) {
 
-
 	fc := entity.ParseFabircChain(chain)
 	resp := l.FabircService.QueryChainPods(fc)
 	var ret gintool.RespData
@@ -163,7 +161,7 @@ func (l *ChainService) QueryChainPods(chain *entity.Chain) (bool, interface{}) {
 	}
 
 	if ret.Code == 0 {
-		return true,ret.Data
+		return true, ret.Data
 	} else {
 		return false, ret.Msg
 	}
@@ -180,13 +178,12 @@ func (l *ChainService) ChangeChainResouces(resouce *model.Resources) (bool, inte
 	}
 
 	if ret.Code == 0 {
-		return true,ret.Data
+		return true, ret.Data
 	} else {
 		return false, ret.Msg
 	}
 
 }
-
 
 func (l *ChainService) StopChain(chain *entity.Chain) (bool, string) {
 
@@ -236,8 +233,8 @@ func (l *ChainService) DownloadChainArtifacts(chain *entity.Chain) (io.Reader, i
 
 }
 
-func (l *ChainService) PrintPodLogs(pod corev1.Pod) string {
-	bts := l.FabircService.PrintPodLogs(pod)
+func (l *ChainService) PrintPodLogs(ns string, podname string) string {
+	bts := l.FabircService.PrintPodLogs(ns, podName)
 	return string(bts[:])
 
 }

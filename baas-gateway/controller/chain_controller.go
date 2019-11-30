@@ -253,8 +253,8 @@ func (a *ApiController) ChangeChainResouces(ctx *gin.Context) {
 
 func (a *ApiController) PrintPodLogs(ctx *gin.Context) {
 	ns := ctx.Query("ns")
-	podName := ctx.Query("podname")
-	printlogs := a.chainService.PrintPodLogs(ns, podName)
-	gintool.ResultOk(ctx, printlogs)
+	podName := ctx.Query("podName")
+	printLogs := a.chainService.PrintPodLogs(ns, podName)
+	gintool.ResultOk(ctx, printLogs)
 
 }

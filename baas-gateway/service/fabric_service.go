@@ -77,6 +77,9 @@ func (g FabricService) ChangeChainPodResources(resource model.Resources) []byte 
 	return httputil.PostJson(config.Config.GetString("BaasFabricEngine")+"/changeChainPodResources", resource)
 }
 
+func (g FabricService) GetPod(ns string, podName string) []byte {
+	return httputil.Get(config.Config.GetString("BaasFabricEngine") + "/getPod?ns=" + ns + "&podName=" + podName)
+}
 func (g FabricService) PrintPodLogs(ns string, podName string) string {
 	bts := httputil.Get(config.Config.GetString("BaasFabricEngine") + "/printPodLogs?ns=" + ns + "&podName=" + podName)
 	return string(bts[:])

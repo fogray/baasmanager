@@ -251,6 +251,19 @@ func (a *ApiController) ChangeChainResouces(ctx *gin.Context) {
 
 }
 
+func (a *ApiController) GetPod(ctx *gin.Context) {
+
+	ns := ctx.Query("ns")
+	podName := ctx.Query("podName")
+
+	isSuccess, pod := a.chainService.GetPod(ns, podName)
+	if isSuccess {
+		gintool.ResultOk(ctx, pod)
+	} else {
+		gintool.ResultFail(ctx, "query error")
+	}
+
+}
 func (a *ApiController) PrintPodLogs(ctx *gin.Context) {
 	ns := ctx.Query("ns")
 	podName := ctx.Query("podName")

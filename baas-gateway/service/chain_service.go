@@ -232,6 +232,22 @@ func (l *ChainService) DownloadChainArtifacts(chain *entity.Chain) (io.Reader, i
 
 }
 
+func (l *ChainService) GetPod(ns string, podName string) (bool, interface{}) {
+
+	resp := l.FabircService.GetPod(ns, podName)
+	var ret gintool.RespData
+	err := json.Unmarshal(resp, &ret)
+	if err != nil {
+		return false, "query fail"
+	}
+
+	if ret.Code == 0 {
+		return true, ret.Data
+	} else {
+		return false, ret.Msg
+	}
+
+}
 func (l *ChainService) PrintPodLogs(ns string, podName string) string {
 	return l.FabircService.PrintPodLogs(ns, podName)
 

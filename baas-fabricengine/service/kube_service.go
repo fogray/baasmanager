@@ -34,7 +34,7 @@ func (k KubeService) changeDeployResources(datas *model.Resources) []byte {
 }
 
 func (k KubeService) printPodLogs(ns string, podName string) string {
-	return httputil.PostJson(k.baasKubeEngineUrl + "/printPodLogs?ns=" + ns + "&podName=" + podName)
+	return httputil.Get(k.baasKubeEngineUrl + "/printPodLogs?ns=" + ns + "&podName=" + podName)
 }
 
 func newKubeService() KubeService {

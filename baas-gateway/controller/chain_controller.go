@@ -6,7 +6,6 @@ import (
 	"github.com/fogray/baasmanager/baas-core/core/model"
 	"github.com/fogray/baasmanager/baas-gateway/entity"
 	"github.com/gin-gonic/gin"
-	corev1 "k8s.io/api/core/v1"
 	"net/http"
 	"strconv"
 	"time"
@@ -253,9 +252,9 @@ func (a *ApiController) ChangeChainResouces(ctx *gin.Context) {
 }
 
 func (a *ApiController) PrintPodLogs(ctx *gin.Context) {
-	namespace := ctx.Query("namespace")
+	ns := ctx.Query("ns")
 	podName := ctx.Query("podname")
-	printlogs := a.chainService.PrintPodLogs(namespace, podname)
+	printlogs := a.chainService.PrintPodLogs(ns, podName)
 	gintool.ResultOk(ctx, printlogs)
 
 }

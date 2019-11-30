@@ -45,9 +45,6 @@ func (c *Clients) PrintPodLogs(namespace string, podname string) string {
 	if err != nil {
 		logger.Errorf("error in opening stream")
 	}
-	if podLogs == nil {
-		logger.Errorf("error in opening stream")
-	}
 	defer podLogs.Close()
 
 	buf := new(bytes.Buffer)

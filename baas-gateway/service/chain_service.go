@@ -8,7 +8,6 @@ import (
 	"github.com/fogray/baasmanager/baas-gateway/entity"
 	"github.com/go-xorm/xorm"
 	"io"
-	corev1 "k8s.io/api/core/v1"
 )
 
 type ChainService struct {
@@ -233,7 +232,7 @@ func (l *ChainService) DownloadChainArtifacts(chain *entity.Chain) (io.Reader, i
 
 }
 
-func (l *ChainService) PrintPodLogs(ns string, podname string) string {
+func (l *ChainService) PrintPodLogs(ns string, podName string) string {
 	bts := l.FabircService.PrintPodLogs(ns, podName)
 	return string(bts[:])
 

@@ -41,7 +41,7 @@ func (c *Clients) PrintPodLogs(ns string, podName string) string {
 	podLogOpts := corev1.PodLogOptions{}
 	logger.Infof("PrintPodLogs: ns=%s, podName=%s", ns, podName)
 	pods := c.KubeClient.CoreV1().Pods(ns)
-	logger.Infof(pods.Namespace)
+	logger.Infof(pods)
 	req := pods.GetLogs(podName, &podLogOpts)
 	podLogs, err := req.Stream()
 	//if err != nil {

@@ -40,9 +40,7 @@ func (c *Clients) DeletePod(pod *corev1.Pod, ops *metav1.DeleteOptions) {
 func (c *Clients) PrintPodLogs(ns string, podName string) string {
 	podLogOpts := corev1.PodLogOptions{}
 	logger.Infof("PrintPodLogs: ns=%s, podName=%s", ns, podName)
-	pods := c.KubeClient.CoreV1().Pods(ns)
-	podOpts := metav1.GetOptions{}
-	podInfo, errr := pods.Get(podName, &podOpts)
+	podInfo, errr := c.KubeClient.CoreV1().Pods(ns).Get(podName, metav1.GetOptions{})
 	if (errr != nil) {
 		logger.Errorf("error in getting Pod")
 	}

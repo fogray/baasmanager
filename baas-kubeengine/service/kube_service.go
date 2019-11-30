@@ -237,7 +237,7 @@ func (k *KubeService) GetChainPods(ctx *gin.Context) {
 func (k *KubeService) PrintPodLogs(ctx *gin.Context) {
 	podName := ctx.Query("podName")
 	ns := ctx.Query("ns")
-
+	logger.Infof("printPodLogs: ns=" + ns + ",pod=" + podName)
 	msg := k.client.PrintPodLogs(ns, podName)
 
 	gintool.ResultOk(ctx, msg)
@@ -255,6 +255,6 @@ func Server() {
 	router.POST("/changeDeployResources", kubeService.ChangeDeployResources)
 	router.GET("/getChainDomain", kubeService.GetChainDomain)
 	router.GET("/getChainPods", kubeService.GetChainPods)
-	router.GET("/printPodLog", kubeService.PrintPodLogs)
+	router.GET("/printPodLogs", kubeService.PrintPodLogs)
 	router.Run(":" + config.Config.GetString("BaasKubeEnginePort"))
 }

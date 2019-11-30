@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/fogray/baasmanager/baas-core/common/gintool"
 	"github.com/fogray/baasmanager/baas-core/common/xorm"
 	"github.com/fogray/baasmanager/baas-gateway/config"
-	"github.com/fogray/baasmanager/baas-gateway/service"
 	"github.com/fogray/baasmanager/baas-gateway/controller"
-	"github.com/fogray/baasmanager/baas-core/common/gintool"
+	"github.com/fogray/baasmanager/baas-gateway/service"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -60,7 +60,7 @@ func main() {
 		api.POST("/chain/changeSize", apiController.ChangeChainResouces)
 		api.GET("/chain/download", apiController.ChainDownload)
 		api.GET("/chain/podsQuery", apiController.ChainPodsQuery)
-		api.POST("/chain/printPodLogs", apiController.PrintPodLogs)
+		api.GET("/chain/printPodLogs", apiController.PrintPodLogs)
 
 		api.POST("/channel/add", apiController.ChannelAdd)
 		api.POST("/channel/get", apiController.ChannelGet)

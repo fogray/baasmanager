@@ -1,23 +1,23 @@
 package service
 
 import (
-	"github.com/gin-gonic/gin"
+	"encoding/hex"
 	"fmt"
+	"github.com/fogray/baasmanager/baas-core/common/fileutil"
+	"github.com/fogray/baasmanager/baas-core/common/gintool"
+	"github.com/fogray/baasmanager/baas-core/common/json"
+	"github.com/fogray/baasmanager/baas-core/common/log"
+	"github.com/fogray/baasmanager/baas-core/common/util"
+	"github.com/fogray/baasmanager/baas-core/core/fasdk"
+	"github.com/fogray/baasmanager/baas-core/core/model"
+	"github.com/fogray/baasmanager/baas-fabricengine/config"
+	"github.com/fogray/baasmanager/baas-fabricengine/constant"
+	"github.com/fogray/baasmanager/baas-fabricengine/fautil"
+	"github.com/fogray/baasmanager/baas-fabricengine/generate"
+	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"os"
-	"github.com/fogray/baasmanager/baas-core/common/gintool"
-	"github.com/fogray/baasmanager/baas-core/core/model"
-	"github.com/fogray/baasmanager/baas-fabricengine/generate"
-	"github.com/fogray/baasmanager/baas-fabricengine/fautil"
-	"github.com/fogray/baasmanager/baas-core/core/fasdk"
-	"github.com/fogray/baasmanager/baas-core/common/log"
-	"github.com/fogray/baasmanager/baas-fabricengine/constant"
-	"github.com/fogray/baasmanager/baas-core/common/fileutil"
-	"github.com/fogray/baasmanager/baas-fabricengine/config"
-	"github.com/fogray/baasmanager/baas-core/common/json"
-	"github.com/fogray/baasmanager/baas-core/common/util"
 	"strconv"
-	"encoding/hex"
 )
 
 var logger = log.GetLogger("fabricengine.service", log.INFO)
@@ -114,7 +114,7 @@ func (f FabricService) defK8sYamlAndDeploy(ctx *gin.Context) {
 	datas := new(model.K8sData)
 
 	switch chain.Consensus {
-	case constant.OrdererSolo,constant.OrdererEtcdraft:
+	case constant.OrdererSolo, constant.OrdererEtcdraft:
 		datas.Data = util.Yamls2Bytes(paths.K8sConfigPath, f.kube.baseFiles)
 	case constant.OrdererKafka:
 		datas.Data = util.Yamls2Bytes(paths.K8sConfigPath, append(f.kube.kafkaFiles, f.kube.baseFiles...))
@@ -148,7 +148,7 @@ func (f FabricService) stopChainInK8s(ctx *gin.Context) {
 
 	datas := new(model.K8sData)
 	switch chain.Consensus {
-	case constant.OrdererSolo,constant.OrdererEtcdraft:
+	case constant.OrdererSolo, constant.OrdererEtcdraft:
 		datas.Data = util.Yamls2Bytes(paths.K8sConfigPath, f.kube.baseFiles)
 	case constant.OrdererKafka:
 		datas.Data = util.Yamls2Bytes(paths.K8sConfigPath, append(f.kube.kafkaFiles, f.kube.baseFiles...))
@@ -365,19 +365,19 @@ func (f FabricService) queryLatestBlocks(ctx *gin.Context) {
 		return
 	}
 	height := ledger.BCI.Height
-	blocks := make([]*fasdk.FabricBlock,0)
+	blocks := make([]*fasdk.FabricBlock, 0)
 	/*操作fabric end*/
-	for i:= 0; height > 0;i++{
+	for i := 0; height > 0; i++ {
 		height--
-		if i > 10{
+		if i > 10 {
 			break
 		}
-		block, err :=fsdk.QueryBlock(height)
+		block, err := fsdk.QueryBlock(height)
 		if err != nil {
 			gintool.ResultFail(ctx, err)
 			return
 		}
-		blocks = append(blocks,block)
+		blocks = append(blocks, block)
 	}
 	gintool.ResultOk(ctx, blocks)
 }
@@ -406,18 +406,18 @@ func (f FabricService) queryBlock(ctx *gin.Context) {
 		return
 	}
 	//创建channel
-	blocks := make([]*fasdk.FabricBlock,0)
+	blocks := make([]*fasdk.FabricBlock, 0)
 	/*操作fabric end*/
-    var block *fasdk.FabricBlock
-	height,err := strconv.Atoi(search)
+	var block *fasdk.FabricBlock
+	height, err := strconv.Atoi(search)
 	if err == nil {
-		block, err =fsdk.QueryBlock(uint64(height))
+		block, err = fsdk.QueryBlock(uint64(height))
 		if err != nil {
 			gintool.ResultFail(ctx, err)
 			return
 		}
-	}else {
-		hash,err := hex.DecodeString(search)
+	} else {
+		hash, err := hex.DecodeString(search)
 		if err != nil {
 			gintool.ResultFail(ctx, err)
 			return
@@ -436,12 +436,10 @@ func (f FabricService) queryBlock(ctx *gin.Context) {
 		}
 	}
 	if block != nil {
-		blocks = append(blocks,block)
+		blocks = append(blocks, block)
 	}
 	gintool.ResultOk(ctx, blocks)
 	return
-
-
 
 }
 
@@ -497,7 +495,6 @@ func (f FabricService) getConnectConfig(chain model.FabricChain, paths generate.
 	connectConfig := generate.NewConnectConfig(chain, paths.ArtifactPath).GetBytes(ret.Data.(map[string]interface{}))
 	return connectConfig, nil
 }
-
 
 func (f FabricService) queryChainPods(ctx *gin.Context) {
 	var chain model.FabricChain
@@ -598,6 +595,15 @@ func (f FabricService) downloadArtifacts(ctx *gin.Context) {
 	ctx.File(tarFile)
 }
 
+func (f FabricService) printPodLogs(ctx *gin.Context) {
+	ns := ctx.Query("ns")
+	podName := ctx.Query("podName")
+	res := f.kube.printPodLogs(ns, podName)
+
+	gintool.ResultOk(ctx, res)
+
+}
+
 //服务
 func Server() {
 
@@ -624,6 +630,7 @@ func Server() {
 	router.POST("/downloadArtifacts", fabric.downloadArtifacts)
 	router.POST("/queryChainPods", fabric.queryChainPods)
 	router.POST("/changeChainPodResources", fabric.changeChainPodResources)
+	router.GET("/printPodLogs", fabric.printPodLogs)
 
 	router.Run(":" + config.Config.GetString("BaasFabricEnginePort"))
 }

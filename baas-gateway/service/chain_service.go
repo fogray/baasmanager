@@ -233,8 +233,7 @@ func (l *ChainService) DownloadChainArtifacts(chain *entity.Chain) (io.Reader, i
 }
 
 func (l *ChainService) PrintPodLogs(ns string, podName string) string {
-	bts := l.FabircService.PrintPodLogs(ns, podName)
-	return string(bts[:])
+	return l.FabircService.PrintPodLogs(ns, podName)
 
 }
 func NewChainService(engine *xorm.Engine, fabircService *FabricService) *ChainService {

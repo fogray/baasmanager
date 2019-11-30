@@ -2,9 +2,9 @@ package service
 
 import (
 	"github.com/fogray/baasmanager/baas-core/common/httputil"
+	"github.com/fogray/baasmanager/baas-core/core/model"
 	"github.com/fogray/baasmanager/baas-fabricengine/config"
 	"github.com/fogray/baasmanager/baas-fabricengine/constant"
-	"github.com/fogray/baasmanager/baas-core/core/model"
 )
 
 type KubeService struct {
@@ -31,6 +31,10 @@ func (k KubeService) getChainPods(nss string) []byte {
 
 func (k KubeService) changeDeployResources(datas *model.Resources) []byte {
 	return httputil.PostJson(k.baasKubeEngineUrl+"/changeDeployResources", datas)
+}
+
+func (k KubeService) printPodLogs(ns string, podName string) string {
+	return httputil.PostJson(k.baasKubeEngineUrl + "/printPodLogs?ns=" + ns + "&podName=" + podName)
 }
 
 func newKubeService() KubeService {

@@ -40,7 +40,9 @@ func (c *Clients) DeletePod(pod *corev1.Pod, ops *metav1.DeleteOptions) {
 func (c *Clients) PrintPodLogs(ns string, podName string) string {
 	podLogOpts := corev1.PodLogOptions{}
 	logger.Infof("PrintPodLogs: ns=%s, podName=%s", ns, podName)
-	req := c.KubeClient.CoreV1().Pods(ns).GetLogs(podName, &podLogOpts)
+	pods := c.KubeClient.CoreV1().Pods(ns)
+	logger.Infof(pods.Namespace)
+	req := pods.GetLogs(podName, &podLogOpts)
 	podLogs, err := req.Stream()
 	//if err != nil {
 	//	logger.Errorf("error in opening stream")

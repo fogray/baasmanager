@@ -255,6 +255,6 @@ func Server() {
 	router.POST("/changeDeployResources", kubeService.ChangeDeployResources)
 	router.GET("/getChainDomain", kubeService.GetChainDomain)
 	router.GET("/getChainPods", kubeService.GetChainPods)
-	router.POST("/printPodLog", kubeService.PrintPodLogs)
+	router.GET("/printPodLog", kubeService.PrintPodLogs)
 	router.Run(":" + config.Config.GetString("BaasKubeEnginePort"))
 }
